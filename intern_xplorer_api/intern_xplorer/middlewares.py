@@ -25,9 +25,9 @@ class AuthMiddleware:
             # dummy check at this point
             # TODO: improve auth check
             if request.method in ("POST", "PUT", "PATCH", "DELETE") and not is_admin(request):
-                return self._generate_403_unauthorized()
+                return self._generate_401_unauthenticated()
 
-    def _generate_401_unauthenticated(self, message="You're not authenticated to access this resource."):
+    def _generate_401_unauthenticated(self, message="You're not authorized to perform this action."):
         return _generate_response(message, status.HTTP_401_UNAUTHORIZED)
 
     def _generate_403_unauthorized(self, message="You're not authorized to perform this action."):
