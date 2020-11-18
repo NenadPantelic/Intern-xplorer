@@ -48,6 +48,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'intern_xplorer.middlewares.AuthMiddleware',
+    'intern_xplorer.middlewares.ExceptionHandlerMiddleware'
 ]
 
 ROOT_URLCONF = 'intern_xplorer_api.urls'

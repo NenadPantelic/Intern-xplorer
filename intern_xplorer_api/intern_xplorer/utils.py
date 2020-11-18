@@ -24,3 +24,5 @@ def get_url(request):
 # file utils
 def get_file_extension(file):
     return file.split('.')[-1]
+
+
