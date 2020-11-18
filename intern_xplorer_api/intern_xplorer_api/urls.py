@@ -13,11 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path
 from intern_xplorer import views
+from rest_framework.routers import DefaultRouter
+from django.conf.urls import url, include
 
+router = DefaultRouter()
+router.register(r'resources', views.InterviewResourceViewSet)
 urlpatterns = [
-    path('login', views.LoginView.as_view(), name="user_login"),
-    path('logout', views.LogoutView.as_view(), name="user_logout"),
+    url(r'^', include(router.urls)),
+    path('login', views.LoginView.as_view(), name='user_login'),
+    path('logout', views.LogoutView.as_view(), name='user_logout'),
+    path('resources/<int:id>/file', views.ResourceFileView.as_view(), name="resource-file")
 ]

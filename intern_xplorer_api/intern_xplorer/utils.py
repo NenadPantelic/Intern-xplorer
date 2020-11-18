@@ -14,3 +14,13 @@ def logging(*args):
 
 def logging_exception(e):
     logging("Got a", e.__class__.__name__ + ":", e)
+
+
+# URL parsing
+def get_url(request):
+    return '/'.join([url_part if len(url_part) else '' for url_part in request.build_absolute_uri().split('/')[3:]])
+
+
+# file utils
+def get_file_extension(file):
+    return file.split('.')[-1]
