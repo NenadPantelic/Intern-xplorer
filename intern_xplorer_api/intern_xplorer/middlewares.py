@@ -46,7 +46,7 @@ class ExceptionHandlerMiddleware:
         return _generate_response(exception.__str__(), status.HTTP_400_BAD_REQUEST)
 
 
-# helper function
+# helper function - could be moved to utils
 def _generate_response(message, status):
     response = Response(
         {"message": message},
