@@ -27,8 +27,12 @@ class User(AbstractUser):
 
 
 class InterviewResource(models.Model):
-    file = models.FileField(upload_to=get_upload_location)
+    file = models.FileField(null=True, default=None, upload_to=get_upload_location)
     url = models.URLField(null=True, default=None)
     category = models.CharField(blank=False, max_length=21, choices=RESOURCE_CATEGORIES, default="Other")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(default=now)
+
+    @property
+    def has_attached_file(self):
+        return bool(self.file)
