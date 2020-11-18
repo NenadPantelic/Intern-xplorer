@@ -26,9 +26,8 @@ class InterviewResourceSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         return {
-            "id":instance.id,
+            "id": instance.id,
             "url": instance.url,
-            "category":instance.category
+            "category": instance.category,
+            "has_attached_file": instance.has_attached_file
         }
-
-
