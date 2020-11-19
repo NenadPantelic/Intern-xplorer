@@ -9,7 +9,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('intern_xplorer', '0006_auto_20201118_1311'),
+        ('intern_xplorer', '0008_auto_20201119_1223'),
     ]
 
     operations = [

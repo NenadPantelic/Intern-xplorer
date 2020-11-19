@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_extensions',
+    # Django Elasticsearch integration
+    'django_elasticsearch_dsl',
+    # Django REST framework Elasticsearch integration
+    'django_elasticsearch_dsl_drf',
+    'esearch'
 ]
 
 MIDDLEWARE = [
@@ -106,6 +111,29 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Elastic search config
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 50,
+    'ORDERING_PARAM': 'ordering',
+}
+
+# Elasticsearch configuration
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'localhost:9200'
+    },
+}
+
+ELASTICSEARCH_INDEX_NAMES = {
+    'esearch.documents.job_post': 'job_post',
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
