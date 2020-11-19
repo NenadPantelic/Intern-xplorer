@@ -6,7 +6,7 @@ from .utils import get_url
 
 # TODO add job posts to auth urls
 non_auth_urls = ["login", "logout"]
-auth_urls = ["resources"]
+auth_urls = ["resources", "job-postings"]
 
 
 class AuthMiddleware:

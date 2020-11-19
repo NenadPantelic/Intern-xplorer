@@ -1,4 +1,4 @@
-from intern_xplorer.models import User, InterviewResource
+from intern_xplorer.models import User, InterviewResource, JobPosting, Company
 from rest_framework import serializers
 from rest_framework import exceptions
 from .utils import get_file_extension
@@ -31,3 +31,13 @@ class InterviewResourceSerializer(serializers.ModelSerializer):
             "category": instance.category,
             "has_attached_file": instance.has_attached_file
         }
+
+class CompanySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Company
+        fields = "__all__"
+
+class JobPostingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = JobPosting
+        fields = "__all__"

@@ -78,3 +78,14 @@ class ResourceFileView(APIView):
         response['Content-Disposition'] = f'attachment; filename={resource_file.file}'
         data.close()
         return response
+
+class CompanyViewSet(viewsets.ModelViewSet):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+    http_method_names = ['get']
+
+class JobPostingViewSet(viewsets.ModelViewSet):
+    queryset = JobPosting.objects.all()
+    serializer_class = JobPostingSerializer
+    authentication_classes = (TokenAuthentication,)
+    lookup_field = 'id'
