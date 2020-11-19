@@ -17,14 +17,21 @@ from django.urls import path
 from intern_xplorer import views
 from rest_framework.routers import DefaultRouter
 from django.conf.urls import url, include
+from esearch import urls as search_index_urls
+
 
 router = DefaultRouter()
 router.register(r'companies', views.CompanyViewSet)
-router.register(r'job-postings', views.JobPostingViewSet)
+router.register(r'job-posts', views.JobPostViewSet)
 router.register(r'resources', views.InterviewResourceViewSet)
+
+
 urlpatterns = [
     url(r'^', include(router.urls)),
     path('login', views.LoginView.as_view(), name='user_login'),
     path('logout', views.LogoutView.as_view(), name='user_logout'),
-    path('resources/<int:id>/file', views.ResourceFileView.as_view(), name = "resource-file")
+    path('resources/<int:id>/file', views.ResourceFileView.as_view(), name="resource-file"),
+    url(r'q/', include(search_index_urls)),
+
 ]
+

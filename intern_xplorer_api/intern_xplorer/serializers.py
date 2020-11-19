@@ -1,7 +1,8 @@
-from intern_xplorer.models import User, InterviewResource, JobPosting, Company
+from intern_xplorer.models import InterviewResource, JobPost, Company
 from rest_framework import serializers
 from rest_framework import exceptions
 from .utils import get_file_extension
+from esearch.documents.job_post import JobPost as JobPostDoc
 
 
 class LoginSerializer(serializers.Serializer):
@@ -32,12 +33,17 @@ class InterviewResourceSerializer(serializers.ModelSerializer):
             "has_attached_file": instance.has_attached_file
         }
 
+
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
         fields = "__all__"
 
-class JobPostingSerializer(serializers.ModelSerializer):
+
+class JobPostSerializer(serializers.ModelSerializer):
     class Meta:
-        model = JobPosting
+        model = JobPost
         fields = "__all__"
+
+
+
