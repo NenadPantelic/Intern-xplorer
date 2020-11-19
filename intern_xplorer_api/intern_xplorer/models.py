@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.timezone import now
 
 # TODO: role and resource category should be entities
-ROLES = [("ADMIN", "Admin"), ("STUDENT", "Student"), ("RECRUITER", "Recruiter")]
+ROLES = [("admin", "Admin"), ("candidate", "Candidate"), ("recruiter", "Recruiter")]
 RESOURCE_CATEGORIES = [("Data structures", "Data structures and algorithms"),
                        ("Programming languages", "Programming ""languages"),
                        ("System design", "System design"), ("Databases", "Databases"),
@@ -20,7 +20,7 @@ def get_upload_location(instance, filename):
 
 
 class User(AbstractUser):
-    role = models.CharField(blank=False, max_length=10, choices=ROLES, default="STUDENT")
+    role = models.CharField(blank=False, max_length=10, choices=ROLES, default="student")
     created_at = models.DateTimeField(default=now, verbose_name="created at"),
     updated_at = models.DateTimeField(default=now, verbose_name="updated at"),
     email = models.EmailField(blank=False, unique=True)
