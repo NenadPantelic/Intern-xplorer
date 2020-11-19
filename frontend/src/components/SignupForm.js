@@ -28,6 +28,9 @@ const SignupForm = () => (
       <Message>
         Already Have an account? <a href='/login'>Login</a>
       </Message>
+      <p>
+        <a href='/'>Home</a>
+      </p>
     </Grid.Column>
   </Grid>
 )

@@ -26,6 +26,9 @@ const LoginForm = () => (
       <Message>
         New to us? <a href='/signup'>Sign Up</a>
       </Message>
+      <p>
+        <a href='/'> Home</a>
+      </p>
     </Grid.Column>
   </Grid>
 )
