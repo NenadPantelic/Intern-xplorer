@@ -3,7 +3,7 @@ import { Input, Menu } from 'semantic-ui-react'
 
 export default function Navigation() {
     return (
-        <Menu secondary style={{backgroundColor:"#343a40", color: "red"}}>
+        <Menu secondary style={{backgroundColor:"#343a40", margin: "0", padding: "0 4em"}}>
           <Menu.Item as='h2' style={{color: "white"}}
             name='Intern-Xplore'
           />
