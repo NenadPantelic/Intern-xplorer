@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'intern_xplorer.apps.InternXplorerConfig',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
