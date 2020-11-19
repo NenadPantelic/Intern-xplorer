@@ -40,6 +40,11 @@
     font-family: "Neufile Grotesk Semi Bold", sans-serif;
 }
 
+.jobcontainer{
+  border: "1px solid red";
+  display: "none",
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
