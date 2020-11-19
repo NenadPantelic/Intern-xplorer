@@ -1,9 +1,6 @@
 import React from "react";
-import {
-  Container,
-  Button,
-  Header,
-} from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Container, Button, Header } from "semantic-ui-react";
 import Navigation from "./Navigation";
 import recruitment_image from "../assets/recruitment_bg_image.jpg";
 
@@ -40,10 +37,14 @@ export default function Dashboard() {
               marginBottom: "2em",
             }}
           />
-          <Button primary size="big">
-            Sign Up
-          </Button>
-          <Button size="big">Login</Button>
+          <Link to="/signup">
+            <Button primary size="big">
+              Sign Up
+            </Button>
+          </Link>
+          <Link to="/login">
+            <Button size="big">Login</Button>
+          </Link>
         </container>
       </div>
     </div>
