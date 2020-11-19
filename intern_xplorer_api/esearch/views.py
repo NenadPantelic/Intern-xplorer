@@ -33,11 +33,12 @@ class JobPostDocumentViewSet(DocumentViewSet):
     search_fields = (
         'title',
         'role',
-        'category',
+        'job_category',
         'job_type',
         'country',
         'city',
         'company',
+        'description'
     )
     # # Define filtering fields
     filter_fields = {
