@@ -1,24 +1,121 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Container, Button, Header } from "semantic-ui-react";
+import React, { useState, useEffect } from "react";
+import { Container, Button, Header, Search } from "semantic-ui-react";
 import Navigation from "./Navigation";
-import recruitment_image from "../assets/recruitment_bg_image.jpg";
+import Job from "./Job";
+import axios from 'axios'
+
+const apiResult = [
+  {
+    company: "Major League Hacking",
+    title: "Frontend Developer",
+    jobType: "REMOTE/NEW YORK",
+    src:
+      "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_avatar_child_kid-512.png",
+  },
+  {
+    company: "Major League Hacking",
+    title: "Software Developer",
+    jobType: "Full time",
+    src:
+      "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_avatar_child_kid-512.png",
+  },
+  {
+    company: "Major League Hacking",
+    title: "Software Engineer",
+    jobType: "Full time",
+    src:
+      "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_avatar_child_kid-512.png",
+  },
+  {
+    company: "Major League Hacking",
+    title: "DevOps Engineer",
+    jobType: "Full time/REMOTE",
+    src:
+      "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_avatar_child_kid-512.png",
+  },
+  {
+    company: "Major League Hacking",
+    title: "Software Engineer",
+    jobType: "Full time",
+    src:
+      "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_avatar_child_kid-512.png",
+  },
+  {
+    company: "Major League Hacking",
+    title: "DevOps Engineer",
+    jobType: "Full time",
+    src:
+      "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_avatar_child_kid-512.png",
+  },
+  {
+    company: "Major League Hacking",
+    title: "Software Engineer",
+    jobType: "Full time",
+    src:
+      "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_avatar_child_kid-512.png",
+  },
+  {
+    company: "Major League Hacking",
+    title: "DevOps Engineer",
+    jobType: "Full time",
+    src:
+      "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_avatar_child_kid-512.png",
+  },
+  {
+    company: "Major League Hacking",
+    title: "Software Engineer",
+    jobType: "Full time",
+    src:
+      "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_avatar_child_kid-512.png",
+  },
+  {
+    company: "Major League Hacking",
+    title: "DevOps Engineer",
+    jobType: "Full time/Internship",
+    src:
+      "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_avatar_child_kid-512.png",
+  },
+];
+
+const containerStyle = {
+  position: "absolute",
+  width: "70%",
+  top: "30%",
+  left: "15%",
+};
+
+const jobListStyle = {
+  display: "flex",
+  justifyContent: "center",
+  margin: "4rem auto",
+};
+
+const footerContainerStyle = {
+  display: "flex",
+  backgroundColor: "#212529",
+  color: "white",
+  padding: "5rem 7rem",
+  justifyContent: "center",
+};
+
+const jobUrl = "https://my.api.mockaroo.com/jobs.json?key=44ee0720";
 
 export default function Dashboard() {
+  const [jobList, setJobList] = useState([]);
+  useEffect(() => {
+    axios.get(jobUrl)
+      .then(response => {
+        setJobList(response.data);
+      })
+      .catch(error => {
+        console.log("There was an error with this operation");
+      });
+  }, []);
   return (
     <div>
       <Navigation />
-      <div style={{ height: "90vh" }}>
-        <img width="100%" height="100%" src={recruitment_image} />
-        <container
-          text
-          style={{
-            position: "absolute",
-            width: "70%",
-            top: "30%",
-            left: "20%",
-          }}
-        >
+      <div style={{ height: "90vh", backgroundColor: "#212529" }}>
+        <container text style={containerStyle}>
           <Header
             content="Intern Explorer"
             inverted
@@ -37,15 +134,38 @@ export default function Dashboard() {
               marginBottom: "2em",
             }}
           />
-          <Link to="/signup">
-            <Button primary size="big">
-              Sign Up
-            </Button>
-          </Link>
-          <Link to="/login">
-            <Button size="big">Login</Button>
-          </Link>
+          <a href="#job-list">
+            <Button size="big">Get Started</Button>
+          </a>
         </container>
+      </div>
+      <div id="job-list" style={jobListStyle}>
+        <h2>
+          Programming Jobs{" "}
+          <span style={{ fontSize: "19px", color: "red" }}>
+            Latest Job about 2hours ago
+          </span>
+        </h2>
+        <Search />
+      </div>
+      {jobList.map((job) => (
+        <Job details={job} />
+      ))}
+      <div style={footerContainerStyle}>
+        <div style={{ width: "50%", textAlign: "left" }}>
+          <h1>LAND YOUR DREAM JOB!</h1>
+          <p>
+            We strongly encourage employers to embrace diversity, equity, and
+            inclusion as fundamental values when hiring through We Work
+            Remotely.
+          </p>
+          <p style={{ color: "#f03e3e", fontSize: "1.5em" }}>Get in Touch </p>
+        </div>
+        <div style={{ width: "30%", textAlign: "right" }}>
+          <h1>2310</h1>
+          <p>Fresh Remote Jobs Posted.</p>
+          <button className="button">Get In Touch</button>
+        </div>
       </div>
     </div>
   );

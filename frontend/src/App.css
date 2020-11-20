@@ -28,6 +28,23 @@
   color: #61dafb;
 }
 
+.button {
+    background-color: #f03e3e;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: 14px 20px 14px 20px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-top: 15px;
+    font-family: "Neufile Grotesk Semi Bold", sans-serif;
+}
+
+.jobcontainer{
+  border: "1px solid red";
+  display: "none",
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
