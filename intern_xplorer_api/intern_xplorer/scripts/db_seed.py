@@ -1,7 +1,11 @@
 from ..models import User, Company
 
-COMPANIES = ("Facebook", "Amazon", "Apple", "Netflix", "Google", "Microsoft", "Twitter", "Uber", "Aribnb", "Lyft",
-             "Major League Hacking", "Mozilla")
+COMPANIES = (
+    ("Facebook", "", ""), ("Amazon", "", ""), ("Apple", "", ""), ("Netflix", "", ""), ("Google""", ""),
+    ("Microsoft""", ""), ("Twitter", "", ""), ("Uber", "", ""), ("Aribnb", "", ""), ("Lyft", "", ""),
+    ("Major League Hacking", "", ""), ("Mozilla", "", ""))
+
+
 def run():
     # create one admin user - run only once
     admin = User.objects.create(
@@ -14,6 +18,5 @@ def run():
     )
     Company.objects.all().delete()
     # add company creation; TODO: add urls
-    for company in COMPANIES:
-        Company.objects.create(name=company, logo_url="", website="")
-
+    for company, logo, website in COMPANIES:
+        Company.objects.create(name=company, logo_url=logo, website=website)
