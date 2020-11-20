@@ -73,6 +73,6 @@ $ npm start
 
 - [NenadPantelic](https://github.com/NenadPantelic)
 - [Mulenga Bowa](https://github.com/mul53)
-- [Temitope Akinsoto](https://dev.to/peter)
+- [Temitope Akinsoto](https://github.com/temitopeakinsoto)
 - [Manasa Kashyap](https://github.com/Manasa2850)
 
