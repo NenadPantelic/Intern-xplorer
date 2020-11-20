@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Button, Header, Search } from "semantic-ui-react";
 import Navigation from "./Navigation";
-import Job from './Job'
-
+import Job from "./Job";
+import axios from 'axios'
 
 const apiResult = [
   {
@@ -82,32 +82,40 @@ const containerStyle = {
   width: "70%",
   top: "30%",
   left: "15%",
-}
+};
 
 const jobListStyle = {
   display: "flex",
   justifyContent: "center",
   margin: "4rem auto",
-}
+};
 
 const footerContainerStyle = {
   display: "flex",
   backgroundColor: "#212529",
   color: "white",
   padding: "5rem 7rem",
-  justifyContent: "center"
-}
+  justifyContent: "center",
+};
 
+const jobUrl = "https://my.api.mockaroo.com/jobs.json?key=44ee0720";
 
 export default function Dashboard() {
+  const [jobList, setJobList] = useState([]);
+  useEffect(() => {
+    axios.get(jobUrl)
+      .then(response => {
+        setJobList(response.data);
+      })
+      .catch(error => {
+        console.log("There was an error with this operation");
+      });
+  }, []);
   return (
     <div>
       <Navigation />
       <div style={{ height: "90vh", backgroundColor: "#212529" }}>
-        <container
-          text
-          style={containerStyle}
-        >
+        <container text style={containerStyle}>
           <Header
             content="Intern Explorer"
             inverted
@@ -131,10 +139,7 @@ export default function Dashboard() {
           </a>
         </container>
       </div>
-      <div
-        id="job-list"
-        style={jobListStyle}
-      >
+      <div id="job-list" style={jobListStyle}>
         <h2>
           Programming Jobs{" "}
           <span style={{ fontSize: "19px", color: "red" }}>
@@ -143,12 +148,10 @@ export default function Dashboard() {
         </h2>
         <Search />
       </div>
-      {apiResult.map((job) => (
+      {jobList.map((job) => (
         <Job details={job} />
       ))}
-      <div
-        style={footerContainerStyle}
-      >
+      <div style={footerContainerStyle}>
         <div style={{ width: "50%", textAlign: "left" }}>
           <h1>LAND YOUR DREAM JOB!</h1>
           <p>

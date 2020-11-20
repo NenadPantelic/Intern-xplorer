@@ -9,17 +9,17 @@ const jobComponentWrapper = {
 };
 
 export default function Job(prop) {
-  const { company, title, jobType, src } = prop.details;
+  const { company_name, title, job_type, url } = prop.details;
   return (
-    <div className="jobcontainer" style={jobComponentWrapper}>
+    <div style={jobComponentWrapper}>
       <div style={{ width: "10%" }}>
-        <img src={src} width="100%" />
+        <img src={url} width="100%" />
       </div>
       <div style={{ width: "90%", textAlign: "left", paddingLeft: "2rem" }}>
-        <p style={{ fontSize: "16px" }}>{company}</p>
+        <p style={{ fontSize: "16px" }}>{company_name}</p>
         <div>
           <h3>{title}</h3>
-          <p style={{ fontSize: "16px" }}>{jobType}</p>
+          <p style={{ fontSize: "16px" }}>{job_type}</p>
         </div>
       </div>
     </div>
