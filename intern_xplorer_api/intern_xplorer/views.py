@@ -27,7 +27,7 @@ class LoginView(APIView):
             token, created = Token.objects.get_or_create(user=user)
             return Response({"token": token.key, "role": role, "username": username}, status=200)
         except User.DoesNotExist:
-            return Response({"message": "Invalid credentials - wrong username or email"}, status=404)
+            return Response({"message": "Invalid credentials - wrong username or email"}, status=401)
 
 
 class LogoutView(APIView):

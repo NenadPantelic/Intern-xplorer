@@ -44,6 +44,7 @@ class JobPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = JobPost
         fields = "__all__"
+        optional_fields = ['url', 'email']
 
 
 
